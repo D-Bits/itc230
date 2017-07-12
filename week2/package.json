@@ -1,7 +1,7 @@
 {
-  "name": "week1",
+  "name": "week2",
   "version": "1.0.0",
-  "description": "1st project for Advanced Javascript",
+  "description": "2nd project for Advanced Javascript",
   "main": "index.js",
   "scripts": {
     "lint": "eslint **/*.js",
