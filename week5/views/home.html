@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Nations of North America</title>
+    
+    </head>
+    
+    <body>
+        
+        <form>
+            <input type="text" name=""/>
+            <input type="submit" value="Submit"/>
+        </form>
+        
+        {{#if countries}}
+        <h3>Inventory</h3>
+        {{/if}}
+        
+        {{#each countries}}
+        <li><a href="/detail?country={{name}}">{{name}}</a></li>
+        {{/each}}
+        
+        <div id="root"></div>
+        
+    
+    </body>
+</html>

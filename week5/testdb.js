@@ -1,5 +1,5 @@
 
-var countries = require("../models/countries.js");
+var countries = require("./models/countries.js");
 
 countries.find((err, result) => {
     if(err) {
