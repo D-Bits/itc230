@@ -1,0 +1,37 @@
+
+//USA
+{
+    "_id": {
+        "$oid": "9a289650f4e1B36e2740a29c"
+    },
+    "name": "United States",
+    "Population": "321,324,600"
+}
+
+//Canada
+{
+    "_id": {
+        "$oid": "5977e3e9f36d286610572553"
+    },
+    "name": "Canada",
+    "Population": "35362905"
+}
+
+// Mexico
+{
+    "_id": {
+        "$oid": "5977e5d8f36d28661057259e"
+    },
+    "name": "Mexico",
+    "Population": "123166749"
+}
+
+// Greenland
+{
+    "_id": {
+        "$oid": "5977ec93f36d28661057279a"
+    },
+    "name": "Greenland",
+    "Population": "57,728"
+}
+

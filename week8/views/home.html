@@ -1,0 +1,109 @@
+<html>
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width">
+ <title>Week 8 React Page</title>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.0/react.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.0/react-dom.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+
+</head>
+<body>
+
+<div id="root"></div>
+
+<!-- NOTE: script type declaration to support JSX -->
+<script type="text/babel">
+
+// UI elements
+ 
+ const Title = ({title}) => {
+ // simple component w/ single property
+ return <div><h2>{title}</h2></div>;
+ }
+ 
+ const ItemList = ({items, filter, show}) => {
+ // generate array of item nodes
+ const itemNodes = items.map((item) => {
+ return <li id={item._id} key={item._id} onClick={show}>{item.name}</li>
+ });
+ return <ul>{itemNodes}</ul>;
+ }
+ 
+ //nation details
+  const ItemDetails = (props) => {
+        console.log(props.item)
+        return (
+          <span id="item-details">
+            <h3>Details:</h3>
+            <form onChange={props.change}>
+              <input type="text" name="name" placeholder="Name" value={props.item.name || ""} /><p/>
+              <input type="text" name="population" placeholder="Population" value={props.item.population || ""} /><p/>
+              <p/>
+            </form>
+            <button onClick={props.save}>Save</button>  <button onClick={props.reset}>Reset</button> <button onClick={props.delete}>Delete</button>
+          </span>
+        );
+    }
+ 
+ 
+ class MyApp extends React.Component {
+ constructor(props){
+ super(props);
+
+// data from server 
+ this.state = {
+ items: {{{countries}}},
+ curItem:{}
+ };
+ 
+  this.onChange = this.onChange.bind(this); // bind current state to function
+  
+  this.onClear = this.onClear.bind(this);
+  
+  this.showDetails = this.showDetails.bind(this);
+ 
+ }
+ 
+       // handle detail changes
+      onChange(event) {
+          console.log(event.target)
+        var newItem = this.state.curItem;
+        newItem[event.target.name] = event.target.value
+        this.setState({curItem: newItem});
+      }
+      
+        // clear details form
+      onClear() {
+        this.setState({curItem: {}});
+      }
+      
+      //show nation details
+      showDetails(event){
+        // event.target is item clicked. Assumes each item has an id attribute
+        let editItem = this.state.items.find((item) => {
+          return item._id == event.target.id;
+        });
+        this.setState({curItem: editItem});
+      }
+ 
+ render() {
+ return (
+ <div>
+ <Title title="North American Nations (some of them)" />
+ <ItemList items={this.state.items} show={this.showDetails}/>
+ <ItemDetails item={this.state.curItem} change={this.onChange} save={this.onSave} reset={this.onClear} delete={this.onDelete} />
+ </div>
+
+ );
+ }
+ 
+ }
+
+ ReactDOM.render(<MyApp />, document.getElementById('root'));
+
+</script>
+
+</body>
+</html>
