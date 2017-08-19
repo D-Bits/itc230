@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Nations of North America</title>
+    
+    </head>
+    
+    <body>
+       
+       {{#if result}}
+    <h2>{{name}} details</h2>
+    <li>Nation: {{result.name}}</li>
+    <li>Population: {{result.population}}</li>
+  
+    <p>
+    <a href="/delete?country={{result.name}}">Delete</a>
+    </p>
+{{else}}
+        <h2>{{name}} not found</h2>
+{{/if}}
+        
+    </body>
+</html>
